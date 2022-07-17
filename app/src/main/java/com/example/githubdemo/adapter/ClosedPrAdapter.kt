@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.githubdemo.databinding.ItemPrDetailsBinding
 import com.example.githubdemo.models.PrDetails
 import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ClosedPrAdapter : RecyclerView.Adapter<ClosedPrAdapter.ClosedPrViewHolder>() {
+class ClosedPrAdapter constructor(private val callback: Callback) : RecyclerView.Adapter<ClosedPrAdapter.ClosedPrViewHolder>() {
 
     private var prList = mutableListOf<PrDetails>()
 
@@ -29,10 +30,17 @@ class ClosedPrAdapter : RecyclerView.Adapter<ClosedPrAdapter.ClosedPrViewHolder>
     override fun onBindViewHolder(holder: ClosedPrViewHolder, position: Int) {
         val prDetails = prList[position]
         holder.binding.tvTitle.text = prDetails.title
-        holder.binding.tvCreatedDate.text = formatedDate(prDetails.created_at)
-        holder.binding.tvClosedDate.text = formatedDate(prDetails.closed_at)
+        holder.binding.goToWebsite.setOnClickListener {
+            prDetails.html_url?.let { callback.openPRDetails(it) }
+        }
+        holder.binding.tvCreatedDate.text = "was created on ${formatedDate(prDetails.created_at)}"
+        holder.binding.tvClosedDate.text = "and merged on ${formatedDate(prDetails.closed_at)}"
+        holder.binding.tvPrNumber.text = "Pull Request #" + prDetails.number + " by"
         holder.binding.tvUser.text = prDetails.user.login
-        Picasso.get().load(prDetails.user.avatar_url).into(holder.binding.ivImage);
+        Picasso.get()
+            .load(prDetails.user.avatar_url)
+            .transform(CropCircleTransformation())
+            .into(holder.binding.ivImage);
     }
 
     override fun getItemCount(): Int {
@@ -43,11 +51,15 @@ class ClosedPrAdapter : RecyclerView.Adapter<ClosedPrAdapter.ClosedPrViewHolder>
     private fun formatedDate(value: String?): String {
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val date: Date = dateFormat.parse(value)
-        val formatter: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val formatter: DateFormat = SimpleDateFormat("dd MMM yyyy")
         return formatter.format(date)
     }
 
     class ClosedPrViewHolder(val binding: ItemPrDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }
+}
+
+interface Callback {
+    fun openPRDetails(url: String)
 }

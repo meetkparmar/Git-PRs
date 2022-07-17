@@ -1,5 +1,7 @@
 package com.example.githubdemo.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.githubdemo.R
+import com.example.githubdemo.adapter.Callback
 import com.example.githubdemo.adapter.ClosedPrAdapter
 import com.example.githubdemo.databinding.ActivityClosedPrBinding
 import com.example.githubdemo.models.PrDetails
@@ -30,7 +33,11 @@ class ClosedPrActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        adapter = ClosedPrAdapter()
+        adapter = ClosedPrAdapter(object : Callback {
+            override fun openPRDetails(url: String) {
+                startActivity(Intent(Intent.ACTION_VIEW , Uri.parse(url)))
+            }
+        })
         binding.recyclerview.adapter = adapter
     }
 
