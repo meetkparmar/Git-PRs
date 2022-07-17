@@ -1,6 +1,6 @@
-# GitHub-demo
+# Git PRs
 
-Simple App using GitHub API backed by Retrofit.
+Sample App using GitHub API backed by Retrofit.
 
 
 ### Features
