@@ -1,6 +1,6 @@
-package com.example.githubdemo.network
+package com.meetkparmar.gitprs.network
 
-import com.example.githubdemo.models.PrDetails
+import com.meetkparmar.gitprs.models.PrDetails
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

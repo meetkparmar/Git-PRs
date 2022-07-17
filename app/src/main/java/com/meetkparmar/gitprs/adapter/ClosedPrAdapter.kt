@@ -1,11 +1,11 @@
-package com.example.githubdemo.adapter
+package com.meetkparmar.gitprs.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubdemo.databinding.ItemPrDetailsBinding
-import com.example.githubdemo.models.PrDetails
+import com.meetkparmar.gitprs.databinding.ItemPrDetailsBinding
+import com.meetkparmar.gitprs.models.PrDetails
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import java.text.DateFormat

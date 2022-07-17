@@ -1,4 +1,4 @@
-package com.example.githubdemo.models
+package com.meetkparmar.gitprs.models
 
 data class User(
     var login: String? = "",

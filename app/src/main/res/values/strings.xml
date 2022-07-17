@@ -2,5 +2,5 @@
     <string name="app_name">Git PRs</string>
     <string name="title">Title</string>
     <string name="repository">Repository:</string>
-    <string name="empty_list">There is no any closed PR in this Repository</string>
+    <string name="empty_list">There is no closed PR in this Repository.</string>
 </resources>

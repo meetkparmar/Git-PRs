@@ -1,4 +1,4 @@
-package com.example.githubdemo.network
+package com.meetkparmar.gitprs.network
 
 class MainRepository constructor(private val retrofitService: RetrofitService) {
 

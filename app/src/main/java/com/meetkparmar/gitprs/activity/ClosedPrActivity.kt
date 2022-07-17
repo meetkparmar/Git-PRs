@@ -1,4 +1,4 @@
-package com.example.githubdemo.activity
+package com.meetkparmar.gitprs.activity
 
 import android.content.Intent
 import android.net.Uri
@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.githubdemo.R
-import com.example.githubdemo.adapter.Callback
-import com.example.githubdemo.adapter.ClosedPrAdapter
-import com.example.githubdemo.databinding.ActivityClosedPrBinding
-import com.example.githubdemo.models.PrDetails
-import com.example.githubdemo.network.MainRepository
-import com.example.githubdemo.network.RetrofitService
-import com.example.githubdemo.viewModel.ClosedPrViewModel
+import com.meetkparmar.gitprs.R
+import com.meetkparmar.gitprs.databinding.ActivityClosedPrBinding
+import com.meetkparmar.gitprs.adapter.Callback
+import com.meetkparmar.gitprs.adapter.ClosedPrAdapter
+import com.meetkparmar.gitprs.models.PrDetails
+import com.meetkparmar.gitprs.network.MainRepository
+import com.meetkparmar.gitprs.network.RetrofitService
+import com.meetkparmar.gitprs.viewModel.ClosedPrViewModel
 
 class ClosedPrActivity : AppCompatActivity() {
 
@@ -27,7 +27,7 @@ class ClosedPrActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_closed_pr);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_closed_pr);
         initAdapter()
         initView()
     }
